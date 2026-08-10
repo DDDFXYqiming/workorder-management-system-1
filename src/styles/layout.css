@@ -1,35 +1,37 @@
-#ti-main {
-    width: calc(100vw - 232px);
-    height: calc(100vh - 64px);
-    overflow-y: scroll;
-    flex-direction: column;
-}
 #ti-header {
-    border-bottom: 1px solid var(--td-border-level-1-color);
-    display: flex;
-    justify-content: space-between;
-    padding:0 24px;
-}
-#ti-header .ti-reference {
-    display: flex;
-    align-items: center;
+  background: var(--saas-surface);
+  border-bottom: 1px solid var(--saas-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 60px;
+  line-height: 60px;
 }
 
-.ti-net-title {
-    font-size: 28px;
-    font-weight: 600;
-    height: 64px;
-    line-height: 64px;
-    color: var(--td-font-gray-1);  
-    padding-left: 24px;
-    border-bottom: 1px solid var(--td-border-level-1-color);
+#ti-header .t-breadcrumb {
+  font-size: 14px;
 }
+
+.ti-reference {
+  display: flex;
+  align-items: center;
+}
+
 .ti-content-and-footer-wrapper {
-    height: calc(100vh - 64px);
-    overflow-y: scroll;
-    flex-direction: column;
+  overflow-y: auto;
+  background: var(--saas-bg);
 }
+
 .ti-flex {
-    flex: 1 1 calc(100vw - 232px);
-    width: calc(100vw - 232px);
+  min-width: 0;
+}
+
+.ti-ticket-link {
+  color: var(--saas-info);
+  text-decoration: none;
+}
+
+.ti-ticket-link:hover {
+  color: var(--td-brand-color-hover);
 }

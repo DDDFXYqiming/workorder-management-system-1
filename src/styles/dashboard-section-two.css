@@ -1,3 +1,33 @@
-.ti-dashbord-section-two {
-   margin-top: 16px;
+.ti-section-wrapper {
+  background: var(--saas-surface);
+  border: 1px solid var(--saas-border);
+  border-radius: var(--saas-radius-lg);
+  padding: 20px;
+}
+
+.ti-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ti-section-title-area {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.ti-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ti-sub-title {
+  color: var(--saas-faint);
+  font-size: 12px;
+}
+
+.ti-section-content {
+  position: relative;
 }

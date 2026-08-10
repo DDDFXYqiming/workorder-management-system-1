@@ -1,23 +1,36 @@
 .ti-aside-nav {
-    height: 100vh;
-    overflow-y: scroll;
-    font-size: 14px;
-}
-.t-default-menu .t-menu__logo {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--td-font-gray-1);  
-    padding-left: 24px;
-}
-.t-default-menu.t-is-collapsed .t-menu__logo{
-    justify-content: center;
-    padding-left: 0;
+  height: 100%;
+  border-right: 1px solid var(--saas-border);
+  background: var(--saas-surface);
 }
 
-.ti-aside-nav .t-badge {
-    z-index: 2; /* 设置一个较高的 z-index 值 */
-  }
-  
-.span-margin{
-    margin-right: 50px;
+.ti-aside-nav .t-menu__logo {
+  height: 60px;
+  border-bottom: 1px solid var(--saas-border);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--saas-text);
+}
+
+.ti-aside-nav .t-menu__item {
+  margin: 2px 8px;
+  border-radius: var(--saas-radius-sm);
+  transition: background 0.15s ease;
+}
+
+.ti-aside-nav .t-menu__item:hover {
+  background: var(--saas-bg);
+}
+
+.ti-aside-nav .t-menu__item--active {
+  background: var(--saas-info-bg) !important;
+  color: var(--saas-info) !important;
+}
+
+.ti-aside-nav .t-menu__operations {
+  padding: 12px 8px;
+}
+
+.span-margin {
+  margin-left: 4px;
 }

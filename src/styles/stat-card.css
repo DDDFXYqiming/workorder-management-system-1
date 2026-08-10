@@ -1,43 +1,55 @@
+/* 现代 KPI 统计卡 */
 .ti-card-container {
-    width: 100%;
-    height: 168px;
-    padding: 24px 32px;
-    background: var(--td-bg-color-container);
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background: var(--saas-surface);
+  border: 1px solid var(--saas-border);
+  border-radius: var(--saas-radius-lg);
+  padding: 22px 24px;
+  transition:
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
 }
-.ti-card-container .ti-card-title {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-bottom: 8px;
-    margin-top: 2px;
-    line-height: 22px;
-    font-weight: 500;
-    color: var(--td-text-color-primary);
-}
-.ti-card-container .ti-card-number {
-    color: var(--td-text-color-primary);
-    font-size: 36px;
-    margin-bottom: 14px;
-    line-height: 44px;
-}
-.ti-card-container .ti-card-remark {
-    color: var(--td-text-color-placeholder);
+
+.ti-card-container:hover {
+  box-shadow: var(--saas-shadow-md);
+  transform: translateY(-2px);
 }
 
 .ti-card-container.mian-card-container {
-    background: var(--td-brand-color);
-    color: var(--td-text-color-primary);
+  border-color: var(--saas-info);
+  background: linear-gradient(135deg, #2f5bff 0%, #4a74ff 100%);
+  color: #fff;
 }
+
 .ti-card-container.mian-card-container .ti-card-title,
-.ti-card-container.mian-card-container .ti-card-number,
-.ti-card-container.mian-card-container .ti-card-remark  {
-    color: var(--td-text-color-anti);
-}
 .ti-card-container.mian-card-container .ti-card-remark {
-    opacity: .6;
-    line-height: 22px;
-} 
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ti-card-title {
+  font-size: 14px;
+  color: var(--saas-muted);
+  margin: 0 0 10px;
+}
+
+.ti-card-number {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+}
+
+.ti-card-remark {
+  font-size: 11px;
+  color: var(--saas-faint);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ti-card-figure {
+  display: none;
+}

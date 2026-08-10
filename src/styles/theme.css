@@ -1,0 +1,109 @@
+/* ===== 设计令牌：企业工单 SaaS =====
+   参考：专业后台/数据表设计（Setproduct、NN/g）、克制型 SaaS（Linear 风格）
+   通过覆盖 TDesign CSS 变量统一全局主题 */
+:root {
+  /* TDesign 主题定制 */
+  --td-brand-color: #2f5bff;
+  --td-brand-color-hover: #4a74ff;
+  --td-brand-color-active: #2347cc;
+  --td-brand-color-light: #eef2ff;
+  --td-bg-color-page: #f5f6f8;
+  --td-bg-color-container: #ffffff;
+  --td-radius-default: 8px;
+  --td-radius-small: 6px;
+  --td-radius-medium: 10px;
+  --td-radius-large: 14px;
+  --td-shadow-1: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --td-shadow-2: 0 4px 16px rgba(16, 24, 40, 0.08);
+  --td-shadow-3: 0 12px 32px rgba(16, 24, 40, 0.12);
+
+  /* 业务语义色 */
+  --saas-bg: #f5f6f8;
+  --saas-surface: #ffffff;
+  --saas-border: #e6e8ec;
+  --saas-border-strong: #d0d5dd;
+  --saas-text: #101828;
+  --saas-muted: #667085;
+  --saas-faint: #98a2b3;
+  --saas-success: #12b76a;
+  --saas-success-bg: #ecfdf3;
+  --saas-warning: #f79009;
+  --saas-warning-bg: #fffaeb;
+  --saas-danger: #f04438;
+  --saas-danger-bg: #fef3f2;
+  --saas-info: #2f5bff;
+  --saas-info-bg: #eef2ff;
+  --saas-purple: #7a5af8;
+  --saas-purple-bg: #f4f0ff;
+
+  --saas-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --saas-radius-sm: 6px;
+  --saas-radius-md: 10px;
+  --saas-radius-lg: 14px;
+  --saas-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --saas-shadow-md: 0 4px 16px rgba(16, 24, 40, 0.08);
+  --saas-sidebar-width: 220px;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--saas-bg);
+  color: var(--saas-text);
+  font-family: var(--saas-font);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 通用状态徽章 */
+.saas-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.saas-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.saas-status--created { color: var(--saas-info); background: var(--saas-info-bg); }
+.saas-status--processing { color: var(--saas-warning); background: var(--saas-warning-bg); }
+.saas-status--done { color: var(--saas-success); background: var(--saas-success-bg); }
+.saas-status--rejected { color: var(--saas-danger); background: var(--saas-danger-bg); }
+.saas-status--timeout { color: var(--saas-purple); background: var(--saas-purple-bg); }
+
+/* 通用信息行 */
+.saas-info-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--saas-border);
+}
+
+.saas-info-item:last-child {
+  border-bottom: none;
+}
+
+.saas-info-label {
+  color: var(--saas-muted);
+  min-width: 90px;
+  font-size: 13px;
+}
+
+.saas-info-value {
+  color: var(--saas-text);
+  font-weight: 500;
+}

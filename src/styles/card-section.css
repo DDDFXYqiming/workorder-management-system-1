@@ -1,32 +1,57 @@
 .ti-card-wrapper {
-    padding: 24px 32px;
-    background: var(--td-bg-color-container);
-    border-radius: 3px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .ti-card-wrapper .ti-card-header {
-     display: flex;
-     justify-content: space-between;
-     font-size: 20px;
-     line-height: 24px;
-     color: var(--td-text-color-primary);
-     margin-bottom: 24px;
-  }
-  .ti-card-wrapper .ti-card-title-area{
-     font-weight: 500;
-     margin: 8px 0;
-     color: var(--td-text-color-primary);
-  }
-  .ti-card-wrapper .ti-card-title-area .ti-sub-title
-  {
-     font-size: 14px;
-     color: var(--td-brand-color);
-     color: var(--td-text-color-placeholder);
-     line-height: 22px;
-     margin-left: 4px;
-  }
-  .ti-card-content {
-     width: 100%
-  }
+  background: var(--saas-surface);
+  border: 1px solid var(--saas-border);
+  border-radius: var(--saas-radius-lg);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.ti-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--saas-border);
+}
+
+.ti-card-title-area .ti-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--saas-text);
+}
+
+.ti-card-content {
+  padding: 16px 20px;
+}
+
+.ti-info-block {
+  padding: 4px 0;
+}
+
+.ti-info-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--saas-border);
+}
+
+.ti-info-item:last-child {
+  border-bottom: none;
+}
+
+.ti-info-item-title {
+  color: var(--saas-muted);
+  min-width: 100px;
+  font-size: 13px;
+}
+
+.ti-info-item-content {
+  color: var(--saas-text);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.ti-bottom {
+  margin-bottom: 0;
+}

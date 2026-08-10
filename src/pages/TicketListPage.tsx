@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DateRangePicker, Input, Select } from 'tdesign-react'
+import { Button, DateRangePicker, Input, Select } from 'tdesign-react'
 import TicketTable from '@/components/TicketTable'
 import type { TicketQuery } from '@/types'
 import '@/styles/ticket-list.css'
@@ -34,6 +34,13 @@ export default function TicketListPage({ params, page }: TicketListPageProps) {
     }))
   }, [dateValue])
 
+  const onReset = () => {
+    setInputValue('')
+    setSelectValue(undefined)
+    setDateValue([])
+    setQueryParams((prev) => ({ ...prev, title: '', time_scope: null }))
+  }
+
   return (
     <section className="ti-section-wrapper ti-related-wrapper" style={{ height: '100%' }}>
       <div className="ti-section-content">
@@ -65,6 +72,11 @@ export default function TicketListPage({ params, page }: TicketListPageProps) {
                 onChange={(v) => setDateValue(v.map((d) => String(d)))}
                 style={{ flex: '1 1' }}
               />
+            </div>
+            <div className="ti-input-wapper">
+              <Button theme="default" variant="outline" size="small" onClick={onReset}>
+                重置
+              </Button>
             </div>
           </div>
         </div>

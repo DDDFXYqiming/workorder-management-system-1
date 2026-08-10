@@ -1,28 +1,47 @@
-.ti-section-wrapper.ti-related-wrapper {
-    background-color: var(--td-bg-color-container);
-    padding: 30px 32px
+.ti-related-wrapper {
+  padding: 0;
+  overflow: hidden;
 }
+
 .ti-input-area {
-    display: flex;
-    
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--saas-border);
 }
+
 .ti-input-container {
-    flex: 1 1;
-    display: flex;
-}
-.ti-input-operation-container {
-    flex: 0 0 88px
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  align-items: center;
 }
 
 .ti-input-wapper {
-    display: inline-flex;
-    padding: 0 22px 0 0;
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
 .ti-input-title {
-    flex: 0 0 78px;
+  color: var(--saas-muted);
+  font-size: 13px;
+  white-space: nowrap;
 }
+
 .ti-table-area {
-    margin-top: 26px;
+  padding: 20px;
+}
+
+.ti-table-area .t-table {
+  border-radius: var(--saas-radius-md);
+  overflow: hidden;
+}
+
+.ti-table-area .t-table__th {
+  background: var(--saas-bg) !important;
+  color: var(--saas-muted);
+  font-weight: 600;
+}
+
+.ti-table-area .t-table__tr:hover .t-table__td {
+  background: #fafbff;
 }

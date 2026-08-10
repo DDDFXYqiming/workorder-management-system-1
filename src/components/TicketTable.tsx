@@ -19,6 +19,14 @@ interface TableRow {
   create_time: string
 }
 
+const STATUS_CLASS: Record<string, string> = {
+  创建: 'saas-status--created',
+  进行中: 'saas-status--processing',
+  处理完成: 'saas-status--done',
+  驳回: 'saas-status--rejected',
+  超时: 'saas-status--timeout',
+}
+
 function isWithinTimeScope(createTime: string, timeScope: TicketQuery['time_scope']): boolean {
   if (!timeScope || !Array.isArray(timeScope) || timeScope.length < 2) return true
   const create = new Date(createTime).getTime()
@@ -78,7 +86,18 @@ export default function TicketTable({ queryParams, selectValue }: TicketTablePro
   const columns = [
     { align: 'center' as const, ellipsis: true, colKey: 'id', title: 'ID', width: '21%' },
     { colKey: 'title', ellipsis: true, title: '标题', width: '20%' },
-    { align: 'center' as const, ellipsis: true, colKey: 'status', title: '当前状态', width: '12%' },
+    {
+      align: 'center' as const,
+      ellipsis: true,
+      colKey: 'status',
+      title: '当前状态',
+      width: '12%',
+      cell: ({ row }: { row: TableRow }) => (
+        <span className={`saas-status ${STATUS_CLASS[row.status] ?? 'saas-status--created'}`}>
+          {row.status}
+        </span>
+      ),
+    },
     { align: 'center' as const, ellipsis: true, colKey: 'current_handler', title: '创建人', width: '13%' },
     { align: 'center' as const, ellipsis: true, colKey: 'dept', title: '区域号', width: '12%' },
     { align: 'center' as const, ellipsis: true, colKey: 'create_time', title: '创建时间', width: '21%' },
