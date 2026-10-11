@@ -1,48 +1,87 @@
-# 工单管理系统（workorder-management-system-1）
+简体中文 | [English](README.en.md)
 
-软工大作业工单系统。原版为 CRA + JavaScript，本仓库 `refactor` 分支完成现代化重构：
+# 工单管理系统 · Workorder Management System
 
-- Vite + React 18 + TypeScript（原 CRA5 + JS/JSX 混用）
-- TDesign 组件库 + ECharts 统计图表
-- MSW（Mock Service Worker）提供可独立运行的模拟后端，无需启动 Java 服务
-- 保留 Capacitor 5 依赖，可继续打包 Android
-- 腾讯云 COS 桶名/地域等配置外置到 `.env`（不再硬编码在源码中）
+**面向多角色协同审批、状态流转与效能度量的现代化工程工单协作系统**。
+
+`workorder-management-system-1` 是一套具备完整企业级流转生命周期的工单处置与协同平台。系统经过深度技术栈现代化重构，全面迁移至 Vite + React 18 + TypeScript，结合腾讯 TDesign 设计系统、ECharts 数据图表与 Capacitor 5 跨端容器技术。项目内置 Mock Service Worker (MSW) 数据模拟层，无需部署外部 Java 后端即可离线体验工单流转、审批流分支与附件上传的全流程操作，并支持直接打包构建 Android 移动端应用。
+
+---
+
+## 核心特性与业务矩阵
+
+* **全流程工单状态机（State Machine）**：
+  * 支持从工单新建、部门流转、多级审核、协助转派到办结归档的完整状态闭环；
+  * 提供不可变流转历史时间线，清晰追溯每一次操作人、操作建议与时间戳。
+* **多角色权限协同体系**：
+  * **审核人视角**：专注工单合规性初审、复审、一键驳回与关键节点放行；
+  * **处理人视角**：聚焦工单接单分发、办理进度提报、协同单位追加与完成办结。
+* **度量工作台与可视化看板**：
+  * **核心效能卡片**：即时统计预警超时工单、待办积压、我创建的工单与总处置量；
+  * **ECharts 趋势图表**：动态生成周度工单负荷柱状图与流转效能分布。
+* **多端扩展与附件存储**：
+  * 内置 Capacitor 5 混合应用容器，支持一键构建 Android 移动端；
+  * 腾讯云 COS 对象存储配置外置，支持安全规范的工单凭据与附件管理。
+
+---
+
+## 技术架构
+
+| 分层 | 技术选型 | 说明 |
+| :--- | :--- | :--- |
+| **基础底座** | Vite + React 18 + TypeScript | 强类型契约与现代前端工程架构 |
+| **UI 交互规范** | 腾讯 TDesign (React) | 企业级高品质设计语言与通用组件 |
+| **数据可视化** | Apache ECharts | 响应式工单量统计图表与大盘分析 |
+| **离线模拟** | Mock Service Worker (MSW) | 网络层精确拦截，零外部依赖独立运行 |
+| **移动跨端** | Capacitor 5 | 原生 Android 容器打包支持 |
+
+---
 
 ## 快速开始
 
+### 1. 安装与初始化
+
 ```bash
+# 安装依赖
 npm install
-npx msw init public/   # 首次安装后生成 Service Worker 文件
-npm run dev            # 打开 http://localhost:5174
+
+# 初始化 MSW 浏览器 Service Worker
+npx msw init public/
 ```
 
-## 演示账号
+### 2. 启动开发服务器
 
-| 账号 | 密码 | 身份 |
-| --- | --- | --- |
-| `admin1` | `123456` | 审核人（可审核工单） |
-| `worker1` | `123456` | 处理人（可分发/完成工单） |
+```bash
+npm run dev
+```
 
-## 功能清单
+启动完成后在浏览器中访问：`http://localhost:5174`。
 
-- 登录/注册（注册含职位、市/区级联选择）
-- 工作台：预警/总工单/我创建/待办统计卡片 + 周工单量柱状图
-- 工单列表：我的待办、我的预警、我创建的、我相关的、所有工单、分发工单
-- 创建工单（标题/内容/分类/操作单位）
-- 工单详情：进度、内容、基本信息、流转历史
-- 处理工单：审核通过/驳回、转派协助单位、完成工单
-- 个人中心、系统管理占位页
+### 3. 内置预设演示账号
+
+| 账号 | 密码 | 业务角色 | 职权范围 |
+| :--- | :--- | :--- | :--- |
+| `admin1` | `123456` | 审核主管 | 工单终审、审批通过、意见驳回 |
+| `worker1` | `123456` | 运维处理人 | 工单接单分发、转派协办、完成结案 |
+
+---
 
 ## 目录结构
 
 ```text
 src/
-  api/        # axios 实例与接口层（auth / process / cos）
-  components/ # 通用组件（StatCard、CardSection、TicketTable）
-  layout/     # 主布局（侧边栏、面包屑、用户下拉）
-  mocks/      # MSW 内存数据库与接口处理器
-  pages/      # 页面（Login、Dashboard、TicketList、CreateTicket...）
-  router/     # 路由配置
-  types/      # TypeScript 类型定义
-  data/       # 静态数据（区域字典）
+├── api/          # Axios 实例封装与工单业务接口
+├── components/   # 通用业务组件（StatCard 指标卡、TicketTable 工单表）
+├── layout/       # 系统骨架布局（响应式侧边栏、面包屑、用户中心）
+├── mocks/        # MSW 内存数据库、状态机流转处理器与种子数据
+├── pages/        # 页面（Dashboard 工作台、TicketList 列表、CreateTicket 等）
+├── router/       # 路由表定义与权限路由守卫
+├── types/        # 核心业务工单与用户领域类型
+└── data/         # 行政区划级联字典与业务枚举
 ```
+
+---
+
+## 许可证
+
+本项目基于 [MIT License](LICENSE) 开源。
