@@ -66,19 +66,34 @@ npm run dev
 
 ---
 
-## 目录结构
-
-```text
-src/
-├── api/          # Axios 实例封装与工单业务接口
-├── components/   # 通用业务组件（StatCard 指标卡、TicketTable 工单表）
-├── layout/       # 系统骨架布局（响应式侧边栏、面包屑、用户中心）
-├── mocks/        # MSW 内存数据库、状态机流转处理器与种子数据
-├── pages/        # 页面（Dashboard 工作台、TicketList 列表、CreateTicket 等）
-├── router/       # 路由表定义与权限路由守卫
-├── types/        # 核心业务工单与用户领域类型
-└── data/         # 行政区划级联字典与业务枚举
+```mermaid
+flowchart TD
+    subgraph Views["页面与组件 (React 18 + TDesign)"]
+        Pages["业务页面 (Dashboard / TicketList / CreateTicket)"]
+        Layout["骨架布局 (响应式侧栏 / 用户中心)"]
+        Components["业务组件 (StatCard 指标卡 / TicketTable 表格)"]
+    end
+    subgraph Services["数据与路由服务"]
+        Router["权限路由守卫 (router/)"]
+        API["Axios 工单业务接口 (api/)"]
+        Types["领域实体契约 (types/)"]
+    end
+    subgraph MockLayer["网络隔离模拟层"]
+        MSW["MSW 内存状态机与拦截器 (mocks/)"]
+    end
+    Pages --> Layout & Components
+    Pages --> Router --> API --> Types
+    API <-->|Service Worker 请求拦截| MSW
 ```
+
+* **`api/`**：Axios 实例封装与工单 RESTful 接口
+* **`components/`**：通用业务组件（StatCard 指标卡、TicketTable 工单表、审核模态框）
+* **`layout/`**：系统骨架布局（响应式折叠侧边栏、面包屑、用户中心）
+* **`mocks/`**：MSW 内存数据库、状态机流转处理器与种子数据
+* **`pages/`**：核心路由视图（工单统计大盘、待办流转列表、工单提报、移动端专属视图）
+* **`router/`**：路由表定义与 RBAC 权限路由守卫
+* **`types/`**：工单领域模型、流转状态与角色类型定义
+* **`data/`**：行政区划级联字典与业务枚举常量
 
 ---
 
